@@ -3,7 +3,6 @@ using System.Linq;
 using CombatSystems;
 using LL_Unity_Utils.Misc;
 using LL_Unity_Utils.Scriptables;
-using NaughtyAttributes;
 using Scriptables.Lists;
 using Scriptables.VFXScriptables;
 using UnityEngine;

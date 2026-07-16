@@ -22,10 +22,8 @@ namespace Editor
         TextField textField;
         ObjectField meshObjectField;
         ObjectField materialObjectField;
-
         VisualElement firstTab;
         VisualElement secondTab;
-
         ToolbarButton firstTabButton;
         ToolbarButton secondTabButton;
 
@@ -76,10 +74,12 @@ namespace Editor
             builder = FindObjectOfType<UniqueItemPrefabBuilder>();
             if (builder == null)
             {
-                errorBox.text = "No Item Builder Found! Please switch to the correct scene and reopen the window! Correct scene: 'ItemSystem' ";
+                errorBox.text =
+                    "No Item Builder Found! Please switch to the correct scene and reopen the window! Correct scene: 'ItemSystem' ";
                 rootVisualElement.Add(errorBox);
                 return;
             }
+
             typeList = new List<Type>(builder.itemTypes);
             serializedBuilderObject = new SerializedObject(builder);
 
@@ -92,7 +92,9 @@ namespace Editor
         {
             var root = rootVisualElement;
             uxmlRef.CloneTree(root);
-            if (errorBox.text == "No Item Builder Found! Please switch to the correct scene and reopen the window! Correct scene: 'ItemSystem' ") return;
+            if (errorBox.text ==
+                "No Item Builder Found! Please switch to the correct scene and reopen the window! Correct scene: 'ItemSystem' ")
+                return;
             root.Bind(serializedBuilderObject);
 
             // Register the Visual Elements related to the tab system.
@@ -133,15 +135,22 @@ namespace Editor
 
             // Continue with registration
             savePathButtonItem.RegisterCallback<ClickEvent>((_onClick => SetFilePath(ref itemSaveFilePath, itemLabel)));
-            healthField.RegisterValueChangedCallback((_onValueChange) => ChangeDictionaryValue(EItemStat.Health, _onValueChange.newValue));
-            manaField.RegisterValueChangedCallback((_onValueChange) => ChangeDictionaryValue(EItemStat.Mana, _onValueChange.newValue));
-            attackSpeedField.RegisterValueChangedCallback((_onValueChange) => ChangeDictionaryValue(EItemStat.AttackSpeed, _onValueChange.newValue));
-            damageFlatField.RegisterValueChangedCallback((_onValueChange) => ChangeDictionaryValue(EItemStat.DamageFlat, _onValueChange.newValue));
-            damagePercentField.RegisterValueChangedCallback((_onValueChange) => ChangeDictionaryValue(EItemStat.DamagePercent, _onValueChange.newValue));
-            movementSpeedField.RegisterValueChangedCallback((_onValueChange) => ChangeDictionaryValue(EItemStat.MovementSpeed, _onValueChange.newValue));
+            healthField.RegisterValueChangedCallback((_onValueChange) =>
+                ChangeDictionaryValue(EItemStat.Health, _onValueChange.newValue));
+            manaField.RegisterValueChangedCallback((_onValueChange) =>
+                ChangeDictionaryValue(EItemStat.Mana, _onValueChange.newValue));
+            attackSpeedField.RegisterValueChangedCallback((_onValueChange) =>
+                ChangeDictionaryValue(EItemStat.AttackSpeed, _onValueChange.newValue));
+            damageFlatField.RegisterValueChangedCallback((_onValueChange) =>
+                ChangeDictionaryValue(EItemStat.DamageFlat, _onValueChange.newValue));
+            damagePercentField.RegisterValueChangedCallback((_onValueChange) =>
+                ChangeDictionaryValue(EItemStat.DamagePercent, _onValueChange.newValue));
+            movementSpeedField.RegisterValueChangedCallback((_onValueChange) =>
+                ChangeDictionaryValue(EItemStat.MovementSpeed, _onValueChange.newValue));
             baseArmorField.RegisterValueChangedCallback((_onValueChange) => baseArmor = _onValueChange.newValue);
             baseDamageField.RegisterValueChangedCallback((_onValueChange) => baseDamage = _onValueChange.newValue);
-            baseAttackSpeedField.RegisterValueChangedCallback((_onValueChange) => baseAttackSpeed = _onValueChange.newValue);
+            baseAttackSpeedField.RegisterValueChangedCallback((_onValueChange) =>
+                baseAttackSpeed = _onValueChange.newValue);
 
 
             uniqueDropDown = root.Q<DropdownField>("UniqueTierDropDown");
@@ -188,7 +197,8 @@ namespace Editor
             var deleteDroptableButton = root.Q<Button>("DeleteDroptableButton");
             deleteDroptableButton.RegisterCallback<ClickEvent>((_onClick => DeleteDropTable()));
             var droptableNameField = root.Q<TextField>("DroptableName");
-            droptableNameField.RegisterValueChangedCallback((_onValueChange => dropTableName = _onValueChange.newValue));
+            droptableNameField.RegisterValueChangedCallback((_onValueChange =>
+                dropTableName = _onValueChange.newValue));
             var droptableLabel = root.Q<Label>("FilePathLabelTable");
             var savePathButtonTable = root.Q<ToolbarButton>("OpenFolderPathChoosingButtonTable");
 
@@ -196,7 +206,8 @@ namespace Editor
             string cutStringTable = tableSaveFilePath.Split("Assets")[1];
             tableSaveFilePath = "Assets" + cutStringTable;
             droptableLabel.text = "Chosen save path: " + tableSaveFilePath;
-            savePathButtonTable.RegisterCallback<ClickEvent>((_onClick => SetFilePath(ref tableSaveFilePath, droptableLabel)));
+            savePathButtonTable.RegisterCallback<ClickEvent>((_onClick =>
+                SetFilePath(ref tableSaveFilePath, droptableLabel)));
 
             #endregion
         }
@@ -274,11 +285,15 @@ namespace Editor
                 // Checks script type and creates the item based on the script type. (Currently only 2 script types available, which is why this function is just a bool check.
                 if (ItemTypeDictionaries.IsWeapon(typeList[typeDropDown.index]))
                 {
-                    builder.CreatePrefab(textField.value, typeList[typeDropDown.index], (Mesh)meshObjectField.value, (Material)materialObjectField.value, uniqueDropDown.index, itemSaveFilePath, _baseDamage: baseDamage, _baseAttackSpeed: baseAttackSpeed);
+                    builder.CreatePrefab(textField.value, typeList[typeDropDown.index], (Mesh)meshObjectField.value,
+                        (Material)materialObjectField.value, uniqueDropDown.index, itemSaveFilePath,
+                        _baseDamage: baseDamage, _baseAttackSpeed: baseAttackSpeed);
                 }
                 else
                 {
-                    builder.CreatePrefab(textField.value, typeList[typeDropDown.index], (Mesh)meshObjectField.value, (Material)materialObjectField.value, uniqueDropDown.index, itemSaveFilePath, _baseDefence: baseArmor);
+                    builder.CreatePrefab(textField.value, typeList[typeDropDown.index], (Mesh)meshObjectField.value,
+                        (Material)materialObjectField.value, uniqueDropDown.index, itemSaveFilePath,
+                        _baseDefence: baseArmor);
                 }
             }
         }

@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:Toolbar>
+        <uie:ToolbarButton text="Choose save file path" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenFolderPathChoosingButton" />
+    </uie:Toolbar>
+    <ui:Label tabindex="-1" text="Chosen save path:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FilePathLabel" style="-unity-font-style: italic; font-size: 10px;" />
+    <ui:VisualElement name="LevelDataBuilder" style="flex-grow: 0; display: flex; flex-shrink: 0; margin-top: 10px;">
+        <ui:Toggle label="Edit Mode" name="EditModeToggle" value="false" />
+        <uie:ObjectField label="Generation Data" name="EditObjectField" type="Generation.DungeonGeneration.DungeonGenerationScriptables.LevelGenerationData, Assembly-CSharp" />
+        <ui:TextField picking-mode="Ignore" label="Generation Data Name" name="GenerationDataNameField" />
+        <ui:IntegerField label="Generation Grid Width" value="0" name="GenerationWidthField" binding-path="GenerationGridWidth" />
+        <ui:IntegerField label="Generation Grid Height" value="0" name="GenerationHeightField" binding-path="GenerationGridHeight" />
+        <ui:FloatField label="Grid cell size" value="0" name="GridCellSizeField" binding-path="GridCellSize" />
+        <ui:IntegerField label="Min Room Count" value="0" name="MinRoomCountField" binding-path="MinRoomCount" />
+        <ui:Toggle label="Use static seed" name="LevelDataStaticSeedToggle" value="true" binding-path="UseStaticSeed" />
+        <ui:IntegerField label="Seed" value="0" name="SeedField" focusable="true" readonly="false" binding-path="Seed" />
+        <ui:FloatField label="Room increment per level" value="0" name="RoomIncrementField" binding-path="RoomCountIncrement" />
+        <uie:ObjectField label="Tileset" name="TilesetField" type="Generation.DungeonGeneration.DungeonGenerationScriptables.GenerationTileset, Assembly-CSharp" binding-path="Tileset" />
+        <ui:Button text="Create Level Generation Data" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GenerateLevelDataButton" style="height: 30px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="GenerationTab" style="flex-grow: 1; flex-shrink: 0; margin-top: 45px;">
+        <uie:PropertyField name="LevelList" binding-path="GenerationData" />
+        <ui:Toggle label="Use static seeds" name="StaticSeedToggle" value="false" />
+        <ui:Button text="Generate" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GenerationButton" style="height: 30px;" />
+    </ui:VisualElement>
+</ui:UXML>
