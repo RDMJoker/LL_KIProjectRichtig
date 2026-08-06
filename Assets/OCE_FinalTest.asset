@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8d988e610b41478ed44445a0adfba8, type: 3}
+  m_Name: OCE_FinalTest
+  m_EditorClassIdentifier: 
+  GenerationGridWidth: 200
+  GenerationGridHeight: 200
+  MinRoomCount: 5
+  RoomCountIncrement: 2
+  UseStaticSeed: 0
+  Seed: 22
+  GridCellSize: 15
+  Tileset: {fileID: 11400000, guid: f0b18df083f09bf479150df9a4de07c0, type: 2}
